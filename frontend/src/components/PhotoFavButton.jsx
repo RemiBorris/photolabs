@@ -8,7 +8,7 @@ function PhotoFavButton(props) {
   const [isTrue, setIsTrue] = useState(false);
   
   const handleClick = () => {
-    setIsTrue(!isTrue);
+    setIsTrue(isTrue=> !isTrue);
   }
 
   return (

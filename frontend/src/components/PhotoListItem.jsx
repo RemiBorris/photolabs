@@ -10,12 +10,12 @@ const PhotoListItem = (props) => {
   return(
     <div className="photo-list__item">
       <PhotoFavButton/>
-      <img className="photo-list__image" src={props.photo.imageSource}></img>
+      <img className="photo-list__image" src={props.imageSource}></img>
       <div className="photo-list__user-details">
-        <img className="photo-list__user-profile"src={props.photo.profile}></img>
+        <img className="photo-list__user-profile"src={props.profile}></img>
         <div className="photo-list__user-info">
-          <span>{props.photo.username}</span>
-          <div className="photo-list__user-location">{props.photo.location.city}, {props.photo.location.country}</div>
+          <span>{props.username}</span>
+          <div className="photo-list__user-location">{props.location.city}, {props.location.country}</div>
         </div>
       </div>
     </div>
