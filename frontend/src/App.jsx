@@ -2,6 +2,8 @@ import React from 'react';
 
 import PhotoListItem from './components/PhotoListItem';
 import './App.scss';
+import PhotoFavButton from 'components/PhotoFavButton';
+
 
 const sampleDataForPhotoListItem = {
   id: "1",
@@ -14,7 +16,7 @@ const sampleDataForPhotoListItem = {
   profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
 };
 
-const photos = new Array(<PhotoListItem photo={sampleDataForPhotoListItem}/>, <PhotoListItem photo={sampleDataForPhotoListItem}/>, <PhotoListItem photo={sampleDataForPhotoListItem}/>)
+const photos = new Array(3).fill(sampleDataForPhotoListItem).map((data, index) => <PhotoListItem photo={data} key={index}/>)
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
