@@ -1,9 +1,10 @@
 import React from 'react';
 
-import PhotoList from 'components/PhotoList';
-import PhotoListItem from './components/PhotoListItem';
+// import PhotoList from 'components/PhotoList';
+// import PhotoListItem from './components/PhotoListItem';
 import './App.scss';
-import PhotoFavButton from 'components/PhotoFavButton';
+// import PhotoFavButton from 'components/PhotoFavButton';
+import TopicList from 'components/TopicList';
 
 // const photos = new Array(3).fill(sampleDataForPhotoListItem).map((data, index) => <PhotoListItem photo={data} key={index}/>)
 
@@ -12,7 +13,8 @@ const App = () => {
   return (
     <div className="App">
       {/* {photos} */}
-      <PhotoList />
+      {/* <PhotoList /> */}
+      <TopicList />
     </div>
   );
 };
