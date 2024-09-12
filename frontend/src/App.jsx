@@ -1,10 +1,11 @@
 import React from 'react';
 
-// import PhotoList from 'components/PhotoList';
-// import PhotoListItem from './components/PhotoListItem';
+import PhotoList from 'components/PhotoList';
+import PhotoListItem from './components/PhotoListItem';
 import './App.scss';
-// import PhotoFavButton from 'components/PhotoFavButton';
+import PhotoFavButton from 'components/PhotoFavButton';
 import TopicList from 'components/TopicList';
+import TopNavigation from 'components/TopNavigationBar';
 
 // const photos = new Array(3).fill(sampleDataForPhotoListItem).map((data, index) => <PhotoListItem photo={data} key={index}/>)
 
@@ -12,9 +13,9 @@ import TopicList from 'components/TopicList';
 const App = () => {
   return (
     <div className="App">
+      <TopNavigation />
       {/* {photos} */}
       {/* <PhotoList /> */}
-      <TopicList />
     </div>
   );
 };
