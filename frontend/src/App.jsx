@@ -1,5 +1,7 @@
 import React from 'react';
 
+import mockPhotos from 'mocks/photos';
+import topics from 'mocks/topics';
 import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
 
@@ -7,7 +9,7 @@ import HomeRoute from 'routes/HomeRoute';
 const App = () => {
   return (
     <div className="App">
-      <HomeRoute/>
+      <HomeRoute photosData={mockPhotos} topics={topics}/>
     </div>
   );
 };
