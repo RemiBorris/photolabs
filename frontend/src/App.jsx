@@ -9,16 +9,16 @@ import HomeRoute from 'routes/HomeRoute';
 
 const App = () => {
 
-  const [photoFavorites, setPhotoFavorites] = useState({});
+  const [photoFavorites, setPhotoFavorites] = useState([]);
 
-  const toggleFavorites = (photo) => {
+  const toggleFavorites = (id) => {
     setPhotoFavorites(current => {
-      const updatedFavorites = { ...current };
-      if (updatedFavorites[photo.id]) {
-        delete updatedFavorites[photo.id]
+      const updatedFavorites = [ ...current ];
+      if (updatedFavorites.includes(id)) {
+        updatedFavorites.splice((updatedFavorites.indexOf(id)),1)
       } else {
-        updatedFavorites[photo.id] = photo;
-      } 
+        updatedFavorites.push(id);
+      }
       return updatedFavorites
     })
   }
