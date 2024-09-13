@@ -3,7 +3,9 @@ import React from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
+
 const PhotoListItem = (props) => {
+  const photoDetails = [props.imageSource, props.photoID, props.profile, props.location, props.username]
   return(
     <div className="photo-list__item">
       <PhotoFavButton
@@ -11,7 +13,7 @@ const PhotoListItem = (props) => {
       toggleFavorites={props.toggleFavorites}
       photoFavorites={props.photoFavorites}
       />
-      <img className="photo-list__image" src={props.imageSource} onClick={props.modalToggle}></img>
+      <img className="photo-list__image" src={props.imageSource} onClick={() => {props.modalToggle(); console.log(photoDetails)}}></img>
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile"src={props.profile}></img>
         <div className="photo-list__user-info">
