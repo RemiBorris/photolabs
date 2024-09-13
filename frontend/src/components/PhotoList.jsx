@@ -16,6 +16,7 @@ const PhotoList = (props) => {
         photoID={photo.id}
         toggleFavorites={props.toggleFavorites}
         photoFavorites={props.photoFavorites}
+        modalToggle={props.modalToggle}
         />
       </li>
     )

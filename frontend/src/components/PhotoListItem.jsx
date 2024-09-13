@@ -11,7 +11,7 @@ const PhotoListItem = (props) => {
       toggleFavorites={props.toggleFavorites}
       photoFavorites={props.photoFavorites}
       />
-      <img className="photo-list__image" src={props.imageSource}></img>
+      <img className="photo-list__image" src={props.imageSource} onClick={props.modalToggle}></img>
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile"src={props.profile}></img>
         <div className="photo-list__user-info">

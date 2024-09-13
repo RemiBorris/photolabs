@@ -4,6 +4,7 @@ import mockPhotos from 'mocks/photos';
 import topics from 'mocks/topics';
 import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
+import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 
 // Note: Rendering a single component to build components in isolation
 
@@ -21,13 +22,21 @@ const App = () => {
     })
   }
 
+  const [modal, setModal] = useState(false);
+
+  const modalToggle = () => {
+    setModal(!modal)
+  }
+
   return (
     <div className="App">
+      {modal && <PhotoDetailsModal modalToggle={modalToggle}/>}
       <HomeRoute
       photosData={mockPhotos}
       topics={topics}
       toggleFavorites={toggleFavorites}
       photoFavorites={photoFavorites}
+      modalToggle={modalToggle}
       />
     </div>
   );
