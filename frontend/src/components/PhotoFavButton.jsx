@@ -9,6 +9,7 @@ function PhotoFavButton(props) {
   
   const handleClick = () => {
     setIsTrue(isTrue=> !isTrue);
+    props.toggleFavorites(props.photo)
   }
 
   return (

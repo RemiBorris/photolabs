@@ -7,8 +7,12 @@ import PhotoList from 'components/PhotoList';
 const HomeRoute = (props) => {
   return (
     <div className="home-route">
-      <TopNavigation topics={props.topics}/>
-      <PhotoList photosData={props.photosData}/>
+      <TopNavigation
+      topics={props.topics}
+      photoFavorites={props.photoFavorites}/>
+      <PhotoList
+      photosData={props.photosData}
+      toggleFavorites={props.toggleFavorites}/>
     </div>
   );
 };

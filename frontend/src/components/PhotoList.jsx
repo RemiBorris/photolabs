@@ -13,6 +13,8 @@ const PhotoList = (props) => {
         profile={photo.user.profile}
         username={photo.user.username}
         location={photo.location}
+        photo={photo}
+        toggleFavorites={props.toggleFavorites}
         />
       </li>
     )
