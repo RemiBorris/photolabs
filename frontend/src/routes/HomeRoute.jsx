@@ -15,6 +15,7 @@ const HomeRoute = (props) => {
       toggleFavorites={props.toggleFavorites}
       photoFavorites={props.photoFavorites}
       modalToggle={props.modalToggle}
+      setModalPhotoDetails={props.setModalPhotoDetails}
       />
     </div>
   );

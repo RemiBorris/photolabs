@@ -28,15 +28,19 @@ const App = () => {
     setModal(!modal)
   }
 
+  const [modalPhotoDetails, setModalPhotoDetails] = useState();
+  
+
   return (
     <div className="App">
-      {modal && <PhotoDetailsModal modalToggle={modalToggle}/>}
+      {modal && <PhotoDetailsModal modalToggle={modalToggle} modalPhotoDetails={modalPhotoDetails}/>}
       <HomeRoute
       photosData={mockPhotos}
       topics={topics}
       toggleFavorites={toggleFavorites}
       photoFavorites={photoFavorites}
       modalToggle={modalToggle}
+      setModalPhotoDetails={setModalPhotoDetails}
       />
     </div>
   );
