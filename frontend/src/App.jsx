@@ -13,13 +13,11 @@ const App = () => {
 
   const toggleFavorites = (id) => {
     setPhotoFavorites(current => {
-      const updatedFavorites = [ ...current ];
-      if (updatedFavorites.includes(id)) {
-        updatedFavorites.splice((updatedFavorites.indexOf(id)),1)
+      if (current.includes(id)) {
+        return current.filter(photoID => photoID !== id);
       } else {
-        updatedFavorites.push(id);
+        return [...current, id];
       }
-      return updatedFavorites
     })
   }
 
