@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import useApplicationData from 'hooks/useApplicationData';
 import mockPhotos from 'mocks/photos';
 import topics from 'mocks/topics';
 import './App.scss';
@@ -10,42 +11,26 @@ import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 
 const App = () => {
 
-  const [photoFavorites, setPhotoFavorites] = useState([]);
-
-  const toggleFavorites = (id) => {
-    setPhotoFavorites(current => {
-      if (current.includes(id)) {
-        return current.filter(photoID => photoID !== id);
-      } else {
-        return [...current, id];
-      }
-    })
-  }
-
-  const [modal, setModal] = useState(false);
-
-  const modalToggle = () => {
-    setModal(!modal)
-  }
-
-  const [modalPhotoDetails, setModalPhotoDetails] = useState();
-  
+  const {
+    state,
+    setPhotoSelected,
+    updateToFavPhotoIds,
+    onClosePhotoDetailsModal,
+  } = useApplicationData();
 
   return (
     <div className="App">
-      {modal && <PhotoDetailsModal
-      modalToggle={modalToggle}
-      modalPhotoDetails={modalPhotoDetails}
-      toggleFavorites={toggleFavorites}
-      photoFavorites={photoFavorites}
+      {state.modal && <PhotoDetailsModal
+      onClosePhotoDetailsModal={onClosePhotoDetailsModal}
+      state={state}
+      updateToFavPhotoIds={updateToFavPhotoIds}
       />}
       <HomeRoute
       photosData={mockPhotos}
       topics={topics}
-      toggleFavorites={toggleFavorites}
-      photoFavorites={photoFavorites}
-      modalToggle={modalToggle}
-      setModalPhotoDetails={setModalPhotoDetails}
+      updateToFavPhotoIds={updateToFavPhotoIds}
+      state={state}
+      setPhotoSelected={setPhotoSelected}
       />
     </div>
   );

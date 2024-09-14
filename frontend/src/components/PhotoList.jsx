@@ -3,9 +3,9 @@ import React from "react";
 import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
 
-const PhotoList = (props) => {
+const PhotoList = ({photosData, updateToFavPhotoIds, state, setPhotoSelected, modalRestrictor}) => {
 
-  const photos = props.photosData.map((photo) => {
+  const photos = photosData.map((photo) => {
     return(
       <li key={photo.id}>
         <PhotoListItem
@@ -15,11 +15,10 @@ const PhotoList = (props) => {
         location={photo.location}
         photoID={photo.id}
         photoData={photo}
-        toggleFavorites={props.toggleFavorites}
-        photoFavorites={props.photoFavorites}
-        modalToggle={props.modalToggle}
-        setModalPhotoDetails={props.setModalPhotoDetails}
-        modalRestrictor={props.modalRestrictor}
+        updateToFavPhotoIds={updateToFavPhotoIds}
+        state={state}
+        setPhotoSelected={setPhotoSelected}
+        modalRestrictor={modalRestrictor}
         />
       </li>
     )

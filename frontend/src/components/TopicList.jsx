@@ -3,11 +3,11 @@ import React from "react";
 import TopicListItem from "./TopicListItem";
 import "../styles/TopicList.scss";
 
-const TopicList = (props) => {
+const TopicList = ({topics}) => {
 
-  const titles = props.topics.map(data => {
+  const titles = topics.map(data => {
     return(
-      <TopicListItem key={data.id} data={data}/>
+      <TopicListItem key={data.id} topic={data}/>
     )
   })
 

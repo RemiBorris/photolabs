@@ -5,20 +5,20 @@ import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
 import PhotoFavButton from 'components/PhotoFavButton';
 
-const PhotoDetailsModal = (props) => {
+const PhotoDetailsModal = ({onClosePhotoDetailsModal, state, updateToFavPhotoIds}) => {
 
-  const modalDetail = (props.modalPhotoDetails);
+  const modalDetail = (state.modalPhotoDetails);
   const modalRestrictor = true;
 
   return (
     <div className="photo-details-modal">
-      <button onClick={() => {props.modalToggle()}} className="photo-details-modal__close-button">
+      <button onClick={() => {onClosePhotoDetailsModal()}} className="photo-details-modal__close-button">
         <img src={closeSymbol} alt="close symbol" />
       </button>
       <PhotoFavButton
       photoID={modalDetail.id}
-      toggleFavorites={props.toggleFavorites}
-      photoFavorites={props.photoFavorites}
+      updateToFavPhotoIds={updateToFavPhotoIds}
+      state={state}
       />
       <div className='photo-div'>
         <img className="photo-details-modal__image" src={modalDetail.urls.full}></img>
@@ -33,9 +33,9 @@ const PhotoDetailsModal = (props) => {
       <h2 className='photo-details-modal__header'>Similar Photos</h2>
       <div className='photo-details-modal__images'>
         <PhotoList 
-        photosData={Object.values(props.modalPhotoDetails.similar_photos)}
-        toggleFavorites={props.toggleFavorites}
-        photoFavorites={props.photoFavorites}
+        photosData={Object.values(state.modalPhotoDetails.similar_photos)}
+        updateToFavPhotoIds={updateToFavPhotoIds}
+        state={state}
         modalRestrictor={modalRestrictor}
         />
       </div>
