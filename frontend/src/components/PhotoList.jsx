@@ -19,6 +19,7 @@ const PhotoList = (props) => {
         photoFavorites={props.photoFavorites}
         modalToggle={props.modalToggle}
         setModalPhotoDetails={props.setModalPhotoDetails}
+        modalRestrictor={props.modalRestrictor}
         />
       </li>
     )

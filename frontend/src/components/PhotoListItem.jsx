@@ -7,6 +7,12 @@ import PhotoFavButton from "./PhotoFavButton";
 const PhotoListItem = (props) => {
 
   const tempModalDetails = {photoData: props.photoData}
+  const onClickHanlder = () => {
+    if (!props.modalRestrictor) {
+      props.modalToggle(); 
+      props.setModalPhotoDetails(props.photoData)
+    }
+  }
   
   return(
     <div className="photo-list__item">
@@ -17,7 +23,7 @@ const PhotoListItem = (props) => {
       />
       <img className="photo-list__image"
       src={props.imageSource}
-      onClick={() => {props.modalToggle(); props.setModalPhotoDetails(props.photoData)}}></img>
+      onClick={() => onClickHanlder()}></img>
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile"src={props.profile}></img>
         <div className="photo-list__user-info">

@@ -7,10 +7,11 @@ import PhotoList from 'components/PhotoList';
 const PhotoDetailsModal = (props) => {
 
   const modalDetail = (props.modalPhotoDetails);
+  const modalRestrictor = true;
 
   return (
     <div className="photo-details-modal">
-      <button onClick={() => {props.modalToggle(); console.log(props)}} className="photo-details-modal__close-button">
+      <button onClick={() => {props.modalToggle()}} className="photo-details-modal__close-button">
         <img src={closeSymbol} alt="close symbol" />
       </button>
       <div className='photo-div'>
@@ -23,13 +24,13 @@ const PhotoDetailsModal = (props) => {
           </div>
         </div>
       </div>
-      <header className='photo-details-modal__header'>Similar Photos</header>
+      <h2 className='photo-details-modal__header'>Similar Photos</h2>
       <div className='photo-details-modal__images'>
         <PhotoList 
         photosData={Object.values(props.modalPhotoDetails.similar_photos)}
         toggleFavorites={props.toggleFavorites}
         photoFavorites={props.photoFavorites}
-        modalToggle={props.modalToggle}
+        modalRestrictor={modalRestrictor}
         />
       </div>
     </div>
