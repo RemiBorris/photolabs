@@ -33,7 +33,12 @@ const App = () => {
 
   return (
     <div className="App">
-      {modal && <PhotoDetailsModal modalToggle={modalToggle} modalPhotoDetails={modalPhotoDetails}/>}
+      {modal && <PhotoDetailsModal
+      modalToggle={modalToggle}
+      modalPhotoDetails={modalPhotoDetails}
+      toggleFavorites={toggleFavorites}
+      photoFavorites={photoFavorites}
+      />}
       <HomeRoute
       photosData={mockPhotos}
       topics={topics}
