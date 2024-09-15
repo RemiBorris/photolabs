@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 
 import useApplicationData from 'hooks/useApplicationData';
-import mockPhotos from 'mocks/photos';
-import topics from 'mocks/topics';
 import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
@@ -26,8 +24,6 @@ const App = () => {
       updateToFavPhotoIds={updateToFavPhotoIds}
       />}
       <HomeRoute
-      photosData={mockPhotos}
-      topics={topics}
       updateToFavPhotoIds={updateToFavPhotoIds}
       state={state}
       setPhotoSelected={setPhotoSelected}

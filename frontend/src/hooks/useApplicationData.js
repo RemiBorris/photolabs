@@ -1,44 +1,49 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
+
+const initialState = {
+  modal: false,
+  photoFavorites: [],
+  modalPhotoDetails:{},
+  photosData: [],
+  topicsData: []
+}
 
 const useApplicationData = () => {
 
-  const initialState = { modal: false, photoFavorites: [], modalPhotoDetails:{} }
-
-   const ACTIONS = {
-    FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
-    FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED',
-    SET_PHOTO_DATA: 'SET_PHOTO_DATA',
-    CLOSE_MODAL: 'CLOSE_MODAL',
-    // SET_TOPIC_DATA: 'SET_TOPIC_DATA',
-    // SELECT_PHOTO: 'SELECT_PHOTO',
-    // DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS'
-  }
 
   const reducer = function(state, action) {
     switch (action.type) {
       case 'FAV_PHOTO_ADDED':
         return { 
-          modal: state.modal,
-          modalPhotoDetails: state.modalPhotoDetails,
+          ...state,
           photoFavorites: [...state.photoFavorites, action.id],
         }
       case 'FAV_PHOTO_REMOVED':
         return {
-          modal: state.modal,
-          modalPhotoDetails: state.modalPhotoDetails,
+          ...state, 
           photoFavorites: state.photoFavorites.filter(photoID => photoID !== action.id),
         }
-      case 'SET_PHOTO_DATA':
+      case 'SELECT_PHOTO':
         return {
-          photoFavorites: state.photoFavorites,
+          ...state,
           modal: true,
           modalPhotoDetails: action.photoDetails,
         }
       case 'CLOSE_MODAL':
         return {
-          photoFavorites: state.photoFavorites,
+          ...state,
           modalPhotoDetails: {},
           modal: false,
+        }
+      case 'SET_PHOTO_DATA':
+        return {
+          ...state,
+          photosData: action.payload,
+        }
+      case 'SET_TOPIC_DATA':
+        return {
+          ...state,
+          topicsData: action.payload,
         }
       default:
         throw new Error(
@@ -48,6 +53,18 @@ const useApplicationData = () => {
     }
 
   const [state, dispatch] = useReducer(reducer, initialState)
+
+  useEffect(() => {
+    fetch('/api/photos')
+    .then(res => res.json())
+    .then(data => dispatch({type:'SET_PHOTO_DATA', payload: data}));
+  }, [])
+
+  useEffect(() => {
+    fetch('/api/topics')
+    .then(res => res.json())
+    .then(data => dispatch({type:'SET_TOPIC_DATA', payload: data}))
+  }, [])
 
   const updateToFavPhotoIds = (id) => {
     if (state.photoFavorites.includes(id)) {
@@ -69,7 +86,7 @@ const useApplicationData = () => {
 
   const setPhotoSelected = (photoDetails) => {
     dispatch({
-      type: 'SET_PHOTO_DATA',
+      type: 'SELECT_PHOTO',
       photoDetails: photoDetails
     })
   }
