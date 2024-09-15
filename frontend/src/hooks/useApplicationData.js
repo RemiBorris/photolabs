@@ -1,44 +1,78 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 
 const useApplicationData = () => {
 
-  //State to store fav photos by ID
+  const initialState = { modal: false, photoFavorites: [], modalPhotoDetails:{} }
 
-  const [photoFavorites, setPhotoFavorites] = useState([]);
+   const ACTIONS = {
+    FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
+    FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED',
+    SET_PHOTO_DATA: 'SET_PHOTO_DATA',
+    CLOSE_MODAL: 'CLOSE_MODAL',
+    // SET_TOPIC_DATA: 'SET_TOPIC_DATA',
+    // SELECT_PHOTO: 'SELECT_PHOTO',
+    // DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS'
+  }
+
+  const reducer = function(state, action) {
+    switch (action.type) {
+      case 'FAV_PHOTO_ADDED':
+        return { 
+          modal: state.modal,
+          modalPhotoDetails: state.modalPhotoDetails,
+          photoFavorites: [...state.photoFavorites, action.id],
+        }
+      case 'FAV_PHOTO_REMOVED':
+        return {
+          modal: state.modal,
+          modalPhotoDetails: state.modalPhotoDetails,
+          photoFavorites: state.photoFavorites.filter(photoID => photoID !== action.id),
+        }
+      case 'SET_PHOTO_DATA':
+        return {
+          photoFavorites: state.photoFavorites,
+          modal: true,
+          modalPhotoDetails: action.photoDetails,
+        }
+      case 'CLOSE_MODAL':
+        return {
+          photoFavorites: state.photoFavorites,
+          modalPhotoDetails: {},
+          modal: false,
+        }
+      default:
+        throw new Error(
+          `Tried to reduce with unsupported action type: ${action.type}`
+        );
+      }
+    }
+
+  const [state, dispatch] = useReducer(reducer, initialState)
 
   const updateToFavPhotoIds = (id) => {
-    setPhotoFavorites(current => {
-      if (current.includes(id)) {
-        return current.filter(photoID => photoID !== id);
-      } else {
-        return [...current, id];
-      }
-    })
+    if (state.photoFavorites.includes(id)) {
+      dispatch({
+        type: 'FAV_PHOTO_REMOVED',
+        id: id,
+      });
+    } else {
+      dispatch({
+        type: 'FAV_PHOTO_ADDED',
+        id: id,
+      });
+    }
   }
-
-  //State to check if the modal needs to be rendered or not
-
-  const [modal, setModal] = useState(false);
 
   const onClosePhotoDetailsModal = () => {
-    setModal(false)
+    dispatch({type: 'CLOSE_MODAL'})
   }
-
-  //State to set the photo details when modal is called of what to display
-
-  const [modalPhotoDetails, setModalPhotoDetails] = useState();
 
   const setPhotoSelected = (photoDetails) => {
-    setModal(true);
-    setModalPhotoDetails(photoDetails)
+    dispatch({
+      type: 'SET_PHOTO_DATA',
+      photoDetails: photoDetails
+    })
   }
-
-  const state = {
-    photoFavorites,
-    modal,
-    modalPhotoDetails
-  }
-
 
   return {
     state,
