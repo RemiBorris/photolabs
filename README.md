@@ -2,11 +2,13 @@
 
 Photolabs is a simple, single-page photo app similar to Instagram.
 
+The App allows you to view an enlarged photo by selecting it from the homepage. When viewing the enlarged photo you can view similar photos below to the one selected. You can toggle different topics from the Topic selectors. You are able to favorite a photo from anywhere within the App. You can return to the homepage of the App by clicking the Photolabs Logo.
+
 ## Final Product
 
-!["View of home page"]()
-!["View of activated modal"]()
-!["View of similar photos"](https://github.com/RemiBorris)
+!["View of home page"](https://github.com/RemiBorris/photolabs/blob/main/docs/PhotoLabs%20-%20Home%20Page.png?raw=true)
+!["View of activated modal"](https://github.com/RemiBorris/photolabs/blob/main/docs/PhotoLabs%20-%20Modal%20View.png?raw=true)
+!["View of similar photos"](https://github.com/RemiBorris/photolabs/blob/main/docs/PhotoLabs%20-%20Similar%20Photos.png?raw=true)
 
 ## Getting Started
 
