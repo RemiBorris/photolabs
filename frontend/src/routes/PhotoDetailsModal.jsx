@@ -8,6 +8,7 @@ import PhotoFavButton from 'components/PhotoFavButton';
 const PhotoDetailsModal = ({onClosePhotoDetailsModal, state, updateToFavPhotoIds}) => {
 
   const modalDetail = (state.modalPhotoDetails);
+  //Pass down a modal restrictor when inside the modal to not call modal again
   const modalRestrictor = true;
 
   return (
@@ -15,19 +16,21 @@ const PhotoDetailsModal = ({onClosePhotoDetailsModal, state, updateToFavPhotoIds
       <button onClick={() => {onClosePhotoDetailsModal()}} className="photo-details-modal__close-button">
         <img src={closeSymbol} alt="close symbol" />
       </button>
-      <PhotoFavButton
-      photoID={modalDetail.id}
-      updateToFavPhotoIds={updateToFavPhotoIds}
-      state={state}
-      />
+      <div className='fav-icon-modal'>
+        <PhotoFavButton
+        photoID={modalDetail.id}
+        updateToFavPhotoIds={updateToFavPhotoIds}
+        state={state}
+        />
+      </div>
       <div className='photo-div'>
         <img className="photo-details-modal__image" src={modalDetail.urls.full}></img>
-        <div className='photo-details-modal__photographer-details'>
-          <img className='photo-details-modal__photographer-profile' src={modalDetail.user.profile}></img>
-          <div className='photo-details-modal__photographer-info'>
-            <span>{modalDetail.user.username}</span>
-            <div className='photo-details-modal__photographer-location'>{modalDetail.location.city}, {modalDetail.location.country}</div>
-          </div>
+        </div>
+      <div className='photo-details-modal__photographer-details'>
+        <img className='photo-details-modal__photographer-profile' src={modalDetail.user.profile}></img>
+        <div className='photo-details-modal__photographer-info'>
+          <span>{modalDetail.user.username}</span>
+          <div className='photo-details-modal__photographer-location'>{modalDetail.location.city}, {modalDetail.location.country}</div>
         </div>
       </div>
       <h2 className='photo-details-modal__header'>Similar Photos</h2>

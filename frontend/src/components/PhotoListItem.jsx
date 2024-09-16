@@ -16,7 +16,7 @@ const PhotoListItem = ({
   setPhotoSelected,
   modalRestrictor
 }) => {
-
+  //Check if Modal is already up to block calling another modal
   const onClickHanlder = () => {
     if (!modalRestrictor) {
       setPhotoSelected(photoData)

@@ -15,6 +15,7 @@ const App = () => {
     updateToFavPhotoIds,
     onClosePhotoDetailsModal,
     getPhotosByTopic,
+    resetPhotosTopic,
   } = useApplicationData();
 
   return (
@@ -29,6 +30,7 @@ const App = () => {
       state={state}
       setPhotoSelected={setPhotoSelected}
       getPhotosByTopic={getPhotosByTopic}
+      resetPhotosTopic={resetPhotosTopic}
       />
     </div>
   );
