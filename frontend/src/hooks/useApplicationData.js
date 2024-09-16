@@ -126,6 +126,13 @@ const useApplicationData = () => {
     .then(data => dispatch({type:'SET_PHOTO_DATA', payload: data}))
   }
 
+  const fetchFavPhotos = () => {
+    fetch('/api/photos')
+    .then(res => res.json())
+    .then(data => data.filter(photo => state.photoFavorites.includes(photo.id)))
+    .then(data => dispatch({type:'SET_PHOTO_DATA', payload: data}))
+  }
+
   return {
     state,
     setPhotoSelected,
@@ -133,6 +140,7 @@ const useApplicationData = () => {
     onClosePhotoDetailsModal,
     getPhotosByTopic,
     resetPhotosTopic,
+    fetchFavPhotos,
   };
 };
 

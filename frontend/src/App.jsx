@@ -16,6 +16,7 @@ const App = () => {
     onClosePhotoDetailsModal,
     getPhotosByTopic,
     resetPhotosTopic,
+    fetchFavPhotos,
   } = useApplicationData();
 
   return (
@@ -31,6 +32,7 @@ const App = () => {
       setPhotoSelected={setPhotoSelected}
       getPhotosByTopic={getPhotosByTopic}
       resetPhotosTopic={resetPhotosTopic}
+      fetchFavPhotos={fetchFavPhotos}
       />
     </div>
   );
